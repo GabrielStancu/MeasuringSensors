@@ -1,0 +1,45 @@
+﻿<Window x:Class="MeasuringSensors.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MeasuringSensors"
+        mc:Ignorable="d"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Height="450" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid Background="#FF444444">
+        <StackPanel x:Name="stackPnl" VerticalAlignment="Top" Margin="0 15">
+            <Border Background="Red" Margin="60 5" CornerRadius="20" Height="40">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="18" Text="Temperature" Margin="35 5 0 5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <materialDesign:PackIcon Kind="TemperatureCelsius" Foreground="White" VerticalAlignment="Center" Width="25" Height="25" Margin="5 5 0 0"/>
+                </StackPanel>
+            </Border>
+            <hc:WaveProgressBar Value="{Binding Text, ElementName=Temp}" Maximum="40" Background="#FF555555" WaveFill="Red" WaveStroke="#FF502875" WaveThickness="1" Foreground="White" Text="{Binding Text, ElementName=Temp}"/>
+
+            <TextBox x:Name="Temp" Text="0" Width="40" TextAlignment="Center" HorizontalAlignment="Left" Margin="0 -10"/>
+
+            <Border Background="#FFFF6901" Margin="60 5" CornerRadius="20" Height="40">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="18" Text="BPM" Margin="60 5 0 5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <materialDesign:PackIcon Kind="Heart" Foreground="White" VerticalAlignment="Center" Width="25" Height="25" Margin="10 5 0 0"/>
+                </StackPanel>
+            </Border>
+
+            <Border>
+                <local:Gauge x:Name="BpmGauge"/>
+            </Border>
+
+            <TextBox x:Name="BPM" Text="0" Width="40" TextAlignment="Center" HorizontalAlignment="Left" Margin="0 -10" TextChanged="BPM_TextChanged"/>
+
+            <Button x:Name="btn" Width="130" Height="40" Margin="10" Background="MidnightBlue" Click="Button_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="state" Text="Connect" FontSize="18" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 5 5 5"/>
+                    <materialDesign:PackIcon Kind="Bluetooth" Foreground="White" VerticalAlignment="Center" Height="20" Width="20" Margin="5 5 0 0"/>
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</Window>
